@@ -17,7 +17,7 @@ export default {
     },
     ["formStyle.accentColor"]: {
       control: "color",
-      defaultValue: "#000",
+      defaultValue: "#0bdbdb",
       description: "Main form color",
       table: {
         type: {
@@ -30,7 +30,7 @@ export default {
     },
     ["formStyle.backgroundColor"]: {
       control: "color",
-      defaultValue: "#000",
+      defaultValue: "#2a2d35",
       table: {
         category: "Styling",
         subCategory: "Form color palette",
@@ -38,7 +38,7 @@ export default {
     },
     ["formStyle.tabColor"]: {
       control: "color",
-      defaultValue: "#000",
+      defaultValue: "#363a46",
       table: {
         category: "Styling",
         subCategory: "Form color palette",
@@ -46,7 +46,7 @@ export default {
     },
     ["formStyle.qrCodeBackground"]: {
       control: "color",
-      defaultValue: "#000",
+      defaultValue: "#202020",
       table: {
         category: "Styling",
         subCategory: "Form color palette",
@@ -54,7 +54,7 @@ export default {
     },
     ["formStyle.highlightColor"]: {
       control: "color",
-      defaultValue: "#000",
+      defaultValue: "#434857",
       table: {
         category: "Styling",
         subCategory: "Form color palette",
@@ -62,7 +62,7 @@ export default {
     },
     ["formStyle.inputBackground"]: {
       control: "color",
-      defaultValue: "#000",
+      defaultValue: "#212329",
       table: {
         category: "Styling",
         subCategory: "Form color palette",
@@ -70,7 +70,7 @@ export default {
     },
     ["formStyle.appBtn"]: {
       control: "color",
-      defaultValue: "#000",
+      defaultValue: "#41baba",
       table: {
         category: "Styling",
         subCategory: "Form color palette",
