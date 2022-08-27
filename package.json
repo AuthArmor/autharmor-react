@@ -16,7 +16,8 @@
     "build": "cross-env NODE_OPTIONS='--openssl-legacy-provider' webpack --mode production",
     "lint": "cross-env NODE_OPTIONS='--openssl-legacy-provider' eslint --cache --format codeframe --ext mjs,jsx,js src",
     "storybook": "cross-env NODE_OPTIONS='--openssl-legacy-provider' start-storybook -p 6006",
-    "build-storybook": "cross-env NODE_OPTIONS='--openssl-legacy-provider' build-storybook"
+    "build-storybook": "cross-env NODE_OPTIONS='--openssl-legacy-provider' build-storybook",
+    "chromatic": "npx chromatic --project-token=cd5de0703d29"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
@@ -49,5 +50,7 @@
   },
   "dependencies": {
     "autharmor-sdk": "^3.0.0-beta.2"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "autharmor-sdk-react@1.0.0"
 }
