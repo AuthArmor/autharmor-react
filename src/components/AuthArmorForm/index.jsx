@@ -48,6 +48,8 @@ const AuthArmor = React.forwardRef(
             authenticationRedirectUrl,
           });
 
+          SDKInstance.current = instance;
+
           instance.form.mount(`#${id}`, {
             styles: formStyle,
             methods,
@@ -56,11 +58,21 @@ const AuthArmor = React.forwardRef(
             preferences,
           });
 
-          SDKInstance.current = instance;
+          return () => {
+            instance.destroy();
+            SDKInstance.current = null;
+          };
         }
       } catch (err) {
         alert("AuthArmor SDK: " + err.message);
         console.error(err);
+
+        if (SDKInstance.current) {
+          return () => {
+            SDKInstance.current.destroy();
+            SDKInstance.current = null;
+          };
+        }
       }
     }, [
       id,

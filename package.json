@@ -49,7 +49,7 @@
     "webpack-dev-server": "^3"
   },
   "dependencies": {
-    "autharmor-sdk": "^3.0.0-beta.2"
+    "autharmor-sdk": "^3.0.0-beta.3"
   },
   "readme": "ERROR: No README data found!",
   "_id": "autharmor-sdk-react@1.0.0"

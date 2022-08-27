@@ -3684,10 +3684,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autharmor-sdk@^3.0.0-beta.2:
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/autharmor-sdk/-/autharmor-sdk-3.0.0-beta.2.tgz#9548deec406353f28be261ebf8f39d1a3f78383b"
-  integrity sha512-w20prLcWzOOhBGix41UV3mDAkuezmFbr91lr4/8xtLCVAVKs8rmbGLBMrnDbzccKwlVGaU7+0cROjHN7O7D4hw==
+autharmor-sdk@^3.0.0-beta.3:
+  version "3.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/autharmor-sdk/-/autharmor-sdk-3.0.0-beta.3.tgz#c11090621070f5b0b8295ce64de1d4426e9b6b1e"
+  integrity sha512-zn8/UPH6w/zNfxf8tsiFzkE/+p+5cXTkHUfeEW6cwwht3Ep42rwM8iQvFd36iafjUhv5hjHZ/mtfqgFG4nB6ew==
   dependencies:
     autharmor-webauthn-sdk "^1.0.8"
     kjua "^0.6.0"
