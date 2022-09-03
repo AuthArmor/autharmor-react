@@ -1,6 +1,6 @@
 {
   "name": "autharmor-sdk-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -32,6 +32,7 @@
     "@storybook/manager-webpack4": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.18",
     "babel-loader": "^8.2.5",
     "chromatic": "^6.8.0",
     "cross-env": "^7.0.3",
@@ -40,16 +41,18 @@
     "flat": "^5.0.2",
     "jest": "^26",
     "neutrino": "^9.5.0",
+    "neutrinojs-typescript": "^1.1.6",
     "prop-types": "^15.8.1",
     "react": "^16",
     "react-dom": "^16",
     "react-style-proptype": "^3.2.2",
+    "typescript": "^4.8.2",
     "webpack": "^4",
     "webpack-cli": "^3",
     "webpack-dev-server": "^3"
   },
   "dependencies": {
-    "autharmor-sdk": "^3.0.0-beta.5"
+    "autharmor-sdk": "^3.0.0-beta.7"
   },
   "readme": "ERROR: No README data found!",
   "_id": "autharmor-sdk-react@1.0.0"
