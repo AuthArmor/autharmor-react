@@ -49,8 +49,8 @@
         "typescript": "^5.1.3"
     },
     "peerDependencies": {
-        "@autharmor/sdk": "link:..\\autharmor-jsclient-sdk",
-        "@autharmor/ui": "link:..\\autharmor-jsclient-sdk-ui",
+        "@autharmor/sdk": ">=4.0.0-alpha.2 <4.0.0-alpha.3",
+        "@autharmor/ui": ">=4.0.0-alpha.2 <4.0.0-alpha.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     }
