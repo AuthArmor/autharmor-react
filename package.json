@@ -1,59 +1,57 @@
 {
-  "name": "autharmor-sdk-react",
-  "version": "1.0.1",
-  "main": "index.js",
-  "license": "MIT",
-  "peerDependencies": {
-    "prop-types": "^15",
-    "react": "^16",
-    "react-dom": "^16"
-  },
-  "files": [
-    "build/*"
-  ],
-  "scripts": {
-    "start": "cross-env NODE_OPTIONS='--openssl-legacy-provider' webpack-dev-server --mode development --open --port 3000",
-    "build": "cross-env NODE_OPTIONS='--openssl-legacy-provider' webpack --mode production",
-    "lint": "cross-env NODE_OPTIONS='--openssl-legacy-provider' eslint --cache --format codeframe --ext mjs,jsx,js src",
-    "storybook": "cross-env NODE_OPTIONS='--openssl-legacy-provider' start-storybook -p 6006",
-    "build-storybook": "cross-env NODE_OPTIONS='--openssl-legacy-provider' build-storybook",
-    "chromatic": "npx chromatic --project-token=cd5de0703d29 --auto-accept-changes"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.18.13",
-    "@neutrinojs/jest": "^9.5.0",
-    "@neutrinojs/react-components": "^9.5.0",
-    "@neutrinojs/standardjs": "^9.5.0",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-interactions": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/builder-webpack4": "^6.5.10",
-    "@storybook/manager-webpack4": "^6.5.10",
-    "@storybook/react": "^6.5.10",
-    "@storybook/testing-library": "^0.0.13",
-    "@types/react": "^18.0.18",
-    "babel-loader": "^8.2.5",
-    "chromatic": "^6.8.0",
-    "cross-env": "^7.0.3",
-    "eslint": "^7",
-    "eslint-plugin-storybook": "^0.6.4",
-    "flat": "^5.0.2",
-    "jest": "^26",
-    "neutrino": "^9.5.0",
-    "neutrinojs-typescript": "^1.1.6",
-    "prop-types": "^15.8.1",
-    "react": "^16",
-    "react-dom": "^16",
-    "react-style-proptype": "^3.2.2",
-    "typescript": "^4.8.2",
-    "webpack": "^4",
-    "webpack-cli": "^3",
-    "webpack-dev-server": "^3"
-  },
-  "dependencies": {
-    "autharmor-sdk": "^3.0.0-beta.7"
-  },
-  "readme": "ERROR: No README data found!",
-  "_id": "autharmor-sdk-react@1.0.0"
+    "name": "@autharmor/ui-react",
+    "version": "4.0.0-alpha.1",
+    "type": "module",
+    "source": "src/index.ts",
+    "types": "./dist/types/index.d.ts",
+    "module": "./dist/esm/index.js",
+    "exports": {
+        ".": {
+            "types": "./dist/types/index.d.ts",
+            "import": "./dist/esm/index.js",
+            "browser": "./dist/esm/index.js"
+        }
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/AuthArmor/autharmor-sdk-react#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AuthArmor/autharmor-sdk-react.git"
+    },
+    "files": [
+        "./dist"
+    ],
+    "scripts": {
+        "build": "rollup --config",
+        "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,tsx,jsx}\"",
+        "update-deps": "pnpm up -Li",
+        "typecheck": "tsc --noEmit"
+    },
+    "browserslist": [
+        "last 2 Chrome versions"
+    ],
+    "devDependencies": {
+        "@autharmor/sdk": "link:..\\autharmor-jsclient-sdk",
+        "@autharmor/ui": "link:..\\autharmor-jsclient-sdk-ui",
+        "@babel/preset-env": "^7.22.5",
+        "@babel/preset-react": "^7.22.5",
+        "@babel/preset-typescript": "^7.22.5",
+        "@rollup/plugin-babel": "^6.0.3",
+        "@rollup/plugin-commonjs": "^25.0.1",
+        "@rollup/plugin-node-resolve": "^15.1.0",
+        "@types/react": "^18.2.12",
+        "prettier": "^2.8.8",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "require-json5": "^1.3.0",
+        "rollup": "^3.25.1",
+        "tslib": "^2.5.3",
+        "typescript": "^5.1.3"
+    },
+    "peerDependencies": {
+        "@autharmor/sdk": "link:..\\autharmor-jsclient-sdk",
+        "@autharmor/ui": "link:..\\autharmor-jsclient-sdk-ui",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
 }
