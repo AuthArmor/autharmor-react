@@ -38,6 +38,10 @@ export function MyAuthArmorForm() {
         console.log("Authenticated with", authenticationResult);
     };
 
+    const onRegister = (registrationResult: IRegistrationSuccessResult) => {
+        console.log("Registered with", registrationResult);
+    };
+
     return (
         <AuthArmorForm
             client={client}
