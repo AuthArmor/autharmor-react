@@ -27,7 +27,8 @@ This package exports a React component called `AuthArmorForm` which you can use 
 
 ```tsx
 import { AuthArmorClient, IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/sdk";
-import { AuthArmorForm } from "@autharmor/sdk-react";
+import "@autharmor/ui";
+import { AuthArmorForm } from "@autharmor/ui-react";
 
 export function MyAuthArmorForm() {
     // Refer to the @autharmor/sdk documentation to learn how to instantiate an AuthArmorClient.

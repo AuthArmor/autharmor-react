@@ -1,5 +1,5 @@
 import type { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/sdk";
-import type { IAuthArmorFormCustomElementProps, LogInEvent, RegisterEvent } from "@autharmor/ui";
+import { IAuthArmorFormCustomElementProps, LogInEvent, RegisterEvent } from "@autharmor/ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
 export type AuthArmorFormProps = Partial<IAuthArmorFormCustomElementProps> & {
