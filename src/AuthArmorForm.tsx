@@ -1,5 +1,5 @@
 import type { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/sdk";
-import type { IAuthArmorFormCustomElementProps, LogInEvent, RegisterEvent } from "@autharmor/ui";
+import type { IAuthArmorFormCustomElementProps, IAuthArmorInteractiveClientConfiguration, LogInEvent, RegisterEvent } from "@autharmor/ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
 import "@autharmor/ui";
@@ -11,10 +11,13 @@ export type AuthArmorFormProps = Partial<Omit<IAuthArmorFormCustomElementProps, 
         onLogIn?: (authenticationResult: IAuthenticationSuccessResult) => void;
         onRegister?: (registrationResult: IRegistrationSuccessResult) => void;
     };
+    
+// Avoid unnecessary re-rendering because of the object instance changing.
+const defaultInteractiveConfig: IAuthArmorInteractiveClientConfiguration = {};
 
 export function AuthArmorForm({
     client = null,
-    interactiveConfig = {},
+    interactiveConfig = defaultInteractiveConfig,
     enableLogIn = true,
     enableRegistration = true,
     initialMode = "logIn",
