@@ -2,12 +2,13 @@ import type { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@
 import { IAuthArmorFormCustomElementProps, LogInEvent, RegisterEvent } from "@autharmor/ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
-export type AuthArmorFormProps = Partial<IAuthArmorFormCustomElementProps> & {
-    className?: string;
-    style?: CSSProperties;
-    onLogIn?: (authenticationResult: IAuthenticationSuccessResult) => void;
-    onRegister?: (registrationResult: IRegistrationSuccessResult) => void;
-};
+export type AuthArmorFormProps = Partial<Omit<IAuthArmorFormCustomElementProps, "client">> &
+    Pick<IAuthArmorFormCustomElementProps, "client"> & {
+        className?: string;
+        style?: CSSProperties;
+        onLogIn?: (authenticationResult: IAuthenticationSuccessResult) => void;
+        onRegister?: (registrationResult: IRegistrationSuccessResult) => void;
+    };
 
 export function AuthArmorForm({
     client = null,
