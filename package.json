@@ -31,8 +31,8 @@
         "last 2 Chrome versions"
     ],
     "devDependencies": {
-        "@autharmor/sdk": "link:..\\autharmor-jsclient-sdk",
-        "@autharmor/ui": "link:..\\autharmor-jsclient-sdk-ui",
+        "@autharmor/sdk": "link:..\\autharmor-js",
+        "@autharmor/ui": "link:..\\autharmor-js-ui",
         "@babel/preset-env": "^7.22.5",
         "@babel/preset-react": "^7.22.5",
         "@babel/preset-typescript": "^7.22.5",
