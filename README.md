@@ -1,8 +1,8 @@
-# AuthArmor Javascript Client-Side SDK UI Wrapper for React
+# Auth Armor Javascript Client-Side SDK UI Wrapper for React
 
-AuthArmor provides a SaaS solution to authenticate your users exclusively using passwordless authentication methods such as WebAuthn, magic links and the proprietary AuthArmor mobile app.
+Auth Armor provides a SaaS solution to authenticate your users exclusively using passwordless authentication methods such as WebAuthn, magic links and the proprietary Auth Armor mobile app.
 
-This package wraps the `autharmor-form` component provided by the [@autharmor/ui](https://github.com/AuthArmor/autharmor-jsclient-sdk-ui) package. It allows you to use a native React component to render the AuthArmor form with the full benefits of type-checking and the ability to pass objects to components directly from the markup.
+This package wraps the `autharmor-form` component provided by the [@autharmor/ui](https://github.com/AuthArmor/autharmor-jsclient-sdk-ui) package. It allows you to use a native React component to render the Auth Armor form with the full benefits of type-checking and the ability to pass objects to components directly from the markup.
 
 This package is designed to work together with [@autharmor/sdk](https://github.com/AuthArmor/autharmor-jsclient-sdk) and [@autharmor/ui](https://github.com/AuthArmor/autharmor-jsclient-sdk-ui). A knowledge of how those packages work will be helpful in using this package.
 
@@ -21,7 +21,7 @@ pnpm add @autharmor/sdk @autharmor/ui @autharmor/ui-react
 yarn add @autharmor/sdk @autharmor/ui @autharmor/ui-react
 ```
 
-## Rendering the AuthArmor Form
+## Rendering the Auth Armor Form
 
 This package exports a React component called `AuthArmorForm` which you can use in your React components:
 
@@ -65,4 +65,4 @@ In addition, the component defines a few additional properties:
 
 ## Other Functionality
 
-Other functionality is provided directly by the [@autharmor/sdk](https://github.com/AuthArmor/autharmor-jsclient-sdk) and [@autharmor/ui](https://github.com/AuthArmor/autharmor-jsclient-sdk-ui) packages. Refer to their documentation for more details on how to use AuthArmor in your application.
+Other functionality is provided directly by the [@autharmor/sdk](https://github.com/AuthArmor/autharmor-jsclient-sdk) and [@autharmor/ui](https://github.com/AuthArmor/autharmor-jsclient-sdk-ui) packages. Refer to their documentation for more details on how to use Auth Armor in your application.
