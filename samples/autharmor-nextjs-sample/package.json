@@ -9,9 +9,9 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@autharmor/sdk": "4.0.0-alpha.5",
-        "@autharmor/ui": "4.0.0-alpha.5",
-        "@autharmor/ui-react": "4.0.0-alpha.5",
+        "@autharmor/autharmor-js": "4.0.0-alpha.9",
+        "@autharmor/autharmor-js-ui": "4.0.0-alpha.9",
+        "@autharmor/react": "4.0.0-alpha.9",
         "@types/node": "20.3.3",
         "@types/react": "18.2.14",
         "@types/react-dom": "18.2.6",
