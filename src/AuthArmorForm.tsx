@@ -2,7 +2,7 @@ import type { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@
 import type { IAuthArmorFormCustomElementProps, IAuthArmorInteractiveClientConfiguration, LogInEvent, RegisterEvent } from "@autharmor/autharmor-js-ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
-import "@autharmor/ui";
+import "@autharmor/autharmor-js-ui";
 
 export type AuthArmorFormProps = Partial<Omit<IAuthArmorFormCustomElementProps, "client">> &
     Pick<IAuthArmorFormCustomElementProps, "client"> & {

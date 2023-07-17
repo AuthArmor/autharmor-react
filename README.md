@@ -31,7 +31,7 @@ import "@autharmor/autharmor-js-ui";
 import { AuthArmorForm } from "@autharmor/react";
 
 export function MyAuthArmorForm() {
-    // Refer to the @autharmor/sdk documentation to learn how to instantiate an AuthArmorClient.
+    // Refer to the @autharmor/autharmor-js documentation to learn how to instantiate an AuthArmorClient.
     const client = new AuthArmorClient(...);
 
     const onLogIn = (authenticationResult: IAuthenticationSuccessResult) => {
