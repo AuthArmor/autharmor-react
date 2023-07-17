@@ -1,16 +1,16 @@
 "use client";
 
-import { AuthArmorForm } from "@autharmor/ui-react";
-import { useState } from "react";
-import { authArmorClient, authArmorInteractiveClientConfig } from "@/lib/authArmor";
-
+import { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/autharmor-js";
 // @TODO: Remove import.
-import "@autharmor/ui";
-import { IAuthArmorInteractiveClientConfiguration } from "@autharmor/ui";
+// import "@autharmor/autharmor-js-ui";
+import { IAuthArmorInteractiveClientConfiguration } from "@autharmor/autharmor-js-ui";
+import { AuthArmorForm } from "@autharmor/react";
+import { useState } from "react";
+
+import { authArmorClient, authArmorInteractiveClientConfig } from "@/lib/authArmor";
 import { ensureSuccessCode } from "@/lib/http/ensureSuccessCode";
 import { LogInRequest } from "../auth/log-in/route";
 import { RegisterRequest } from "../auth/register/route";
-import { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/sdk";
 
 export default function SignUpLogInPage() {
     const [allowLogIn, setAllowLogIn] = useState(true);

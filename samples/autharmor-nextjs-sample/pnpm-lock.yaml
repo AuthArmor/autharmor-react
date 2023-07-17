@@ -5,15 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@autharmor/sdk':
-    specifier: 4.0.0-alpha.5
-    version: 4.0.0-alpha.5
-  '@autharmor/ui':
-    specifier: 4.0.0-alpha.5
-    version: 4.0.0-alpha.5(@autharmor/sdk@4.0.0-alpha.5)
-  '@autharmor/ui-react':
-    specifier: 4.0.0-alpha.5
-    version: 4.0.0-alpha.5(@autharmor/sdk@4.0.0-alpha.5)(@autharmor/ui@4.0.0-alpha.5)(react-dom@18.2.0)(react@18.2.0)
+  '@autharmor/autharmor-js':
+    specifier: 4.0.0-alpha.9
+    version: 4.0.0-alpha.9
+  '@autharmor/autharmor-js-ui':
+    specifier: 4.0.0-alpha.9
+    version: 4.0.0-alpha.9(@autharmor/autharmor-js@4.0.0-alpha.9)
+  '@autharmor/react':
+    specifier: 4.0.0-alpha.9
+    version: 4.0.0-alpha.9(@autharmor/autharmor-js-ui@4.0.0-alpha.9)(@autharmor/autharmor-js@4.0.0-alpha.9)(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
     specifier: 20.3.3
     version: 20.3.3
@@ -47,33 +47,33 @@ dependencies:
 
 packages:
 
-  /@autharmor/sdk@4.0.0-alpha.5:
-    resolution: {integrity: sha512-aGcP6qSofDGtEgEI02sctH1wMrSSnbgkZG4ddkmkuQAKdls4LiL8bdzhIQTV+kDTuW+v6obXe3f1a5AyJLpQRA==}
+  /@autharmor/autharmor-js-ui@4.0.0-alpha.9(@autharmor/autharmor-js@4.0.0-alpha.9):
+    resolution: {integrity: sha512-xTvsadWL5HHbgqh+5hfvQrAtmQRkSVrBZO3mAfDMD/xVneuarXtGgli6mELrOy1vFvQOTAz2LoBJM8urq6sMyw==}
+    peerDependencies:
+      '@autharmor/autharmor-js': '>=4.0.0-alpha.9 <4.0.0-alpha.10'
+    dependencies:
+      '@autharmor/autharmor-js': 4.0.0-alpha.9
+      qrcode-generator: 1.4.4
+      solid-element: 1.7.1(solid-js@1.7.8)
+      solid-js: 1.7.8
     dev: false
 
-  /@autharmor/ui-react@4.0.0-alpha.5(@autharmor/sdk@4.0.0-alpha.5)(@autharmor/ui@4.0.0-alpha.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-SG6sEwvIEJarlnLPv7jyTqANvPkAkohKNCE9zuzwLKPHNIqTwH3HVSYmohRdf7u2fBWl4O4JVuKhgEL1M8Mp0g==}
+  /@autharmor/autharmor-js@4.0.0-alpha.9:
+    resolution: {integrity: sha512-rOHI0kXJKDs1skjo6gJZCYiauQzfGnzTWV70HiP6ZCO2WkDmY4Nb1G778+FKIKPUTfHmGGC89P+nX4URJUsWVA==}
+    dev: false
+
+  /@autharmor/react@4.0.0-alpha.9(@autharmor/autharmor-js-ui@4.0.0-alpha.9)(@autharmor/autharmor-js@4.0.0-alpha.9)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-aZqGNNoSi4Z2wUgPFVwc5+HSddfpvqbGl5bWx4/oKTg2D/Ot9vhE27KIIcHQ//6dwS8wE5egapx2lm1t22yhvw==}
     peerDependencies:
-      '@autharmor/sdk': '>=4.0.0-alpha.5 <4.0.0-alpha.6'
-      '@autharmor/ui': '>=4.0.0-alpha.5 <4.0.0-alpha.6'
+      '@autharmor/autharmor-js': '>=4.0.0-alpha.9 <4.0.0-alpha.10'
+      '@autharmor/autharmor-js-ui': '>=4.0.0-alpha.9 <4.0.0-alpha.10'
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@autharmor/sdk': 4.0.0-alpha.5
-      '@autharmor/ui': 4.0.0-alpha.5(@autharmor/sdk@4.0.0-alpha.5)
+      '@autharmor/autharmor-js': 4.0.0-alpha.9
+      '@autharmor/autharmor-js-ui': 4.0.0-alpha.9(@autharmor/autharmor-js@4.0.0-alpha.9)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@autharmor/ui@4.0.0-alpha.5(@autharmor/sdk@4.0.0-alpha.5):
-    resolution: {integrity: sha512-0AwaQKHU7XutsDSUDv/8sm5BkOskM4tH3H9ieEXfxILPee8uN1eXUBUc9Zdl0rTbCBNztus7HF6CwsG3duXywQ==}
-    peerDependencies:
-      '@autharmor/sdk': '>=4.0.0-alpha.5 <4.0.0-alpha.6'
-    dependencies:
-      '@autharmor/sdk': 4.0.0-alpha.5
-      qrcode-generator: 1.4.4
-      solid-element: 1.7.1(solid-js@1.7.7)
-      solid-js: 1.7.7
     dev: false
 
   /@next/env@13.4.7:
@@ -555,17 +555,17 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /solid-element@1.7.1(solid-js@1.7.7):
+  /solid-element@1.7.1(solid-js@1.7.8):
     resolution: {integrity: sha512-VtG3kg3HRUkq6QN4iyZKX1qmXYCEHMO3yH1DfakifaO+ncxHa56jU8SLtEgD55zR230pXQyPTWaEDDS0hTlmpg==}
     peerDependencies:
       solid-js: ^1.7.6
     dependencies:
       component-register: 0.8.3
-      solid-js: 1.7.7
+      solid-js: 1.7.8
     dev: false
 
-  /solid-js@1.7.7:
-    resolution: {integrity: sha512-SPdYVke/Z6Za24PBTbULyQYPrhGO1ZbPany76atO2zF2dmYn2pCotbsw1JtlgWnr9dK2JbwPGnA3ODTGPLhZNw==}
+  /solid-js@1.7.8:
+    resolution: {integrity: sha512-XHBWk1FvFd0JMKljko7FfhefJMTSgYEuVKcQ2a8hzRXfiuSJAGsrPPafqEo+f6l+e8Oe3cROSpIL6kbzjC1fjQ==}
     dependencies:
       csstype: 3.1.2
       seroval: 0.5.1
