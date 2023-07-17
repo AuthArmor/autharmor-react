@@ -1,5 +1,5 @@
-import type { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/sdk";
-import type { IAuthArmorFormCustomElementProps, IAuthArmorInteractiveClientConfiguration, LogInEvent, RegisterEvent } from "@autharmor/ui";
+import type { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/autharmor-js";
+import type { IAuthArmorFormCustomElementProps, IAuthArmorInteractiveClientConfiguration, LogInEvent, RegisterEvent } from "@autharmor/autharmor-js-ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
 import "@autharmor/ui";
