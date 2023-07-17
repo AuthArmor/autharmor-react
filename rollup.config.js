@@ -21,7 +21,7 @@ export default defineConfig({
             format: "esm"
         }
     ],
-    external: ["@autharmor/sdk", "@autharmor/ui", "react", "react-dom"],
+    external: ["@autharmor/autharmor-js", "@autharmor/autharmor-js-ui", "react", "react-dom"],
     plugins: [
         babel({
             extensions: [".js", ".ts", ".jsx", ".tsx"],
