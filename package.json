@@ -1,6 +1,6 @@
 {
-    "name": "@autharmor/ui-react",
-    "version": "4.0.0-alpha.8",
+    "name": "@autharmor/react",
+    "version": "4.0.0-alpha.9",
     "type": "module",
     "source": "src/index.ts",
     "types": "./dist/types/index.d.ts",
@@ -31,8 +31,8 @@
         "last 2 Chrome versions"
     ],
     "devDependencies": {
-        "@autharmor/sdk": "link:..\\autharmor-js",
-        "@autharmor/ui": "link:..\\autharmor-js-ui",
+        "@autharmor/autharmor-js": "link:..\\autharmor-js",
+        "@autharmor/autharmor-js-ui": "link:..\\autharmor-js-ui",
         "@babel/preset-env": "^7.22.5",
         "@babel/preset-react": "^7.22.5",
         "@babel/preset-typescript": "^7.22.5",
@@ -49,8 +49,8 @@
         "typescript": "^5.1.3"
     },
     "peerDependencies": {
-        "@autharmor/sdk": ">=4.0.0-alpha.8 <4.0.0-alpha.9",
-        "@autharmor/ui": ">=4.0.0-alpha.8 <4.0.0-alpha.9",
+        "@autharmor/autharmor-js": ">=4.0.0-alpha.9 <4.0.0-alpha.10",
+        "@autharmor/autharmor-js-ui": ">=4.0.0-alpha.9 <4.0.0-alpha.10",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     }

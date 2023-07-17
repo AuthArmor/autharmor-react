@@ -5,10 +5,10 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
-  '@autharmor/sdk':
+  '@autharmor/autharmor-js':
     specifier: link:..\autharmor-js
     version: link:../autharmor-js
-  '@autharmor/ui':
+  '@autharmor/autharmor-js-ui':
     specifier: link:..\autharmor-js-ui
     version: link:../autharmor-js-ui
   '@babel/preset-env':
