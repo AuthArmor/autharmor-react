@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { AuthSessionData, createAuthCookieHeader } from "@/lib/auth";
+import { authArmorApiClient } from "@/lib/authArmorServer/authArmorApiClient";
 
 export async function GET(request: NextRequest): Promise<NextResponse<void>> {
     const { searchParams } = new URL(request.url);
@@ -13,19 +14,27 @@ export async function GET(request: NextRequest): Promise<NextResponse<void>> {
         });
     }
 
-    // autharmor: validate token
-    const validationSucceeded = true;
+    const validationResult = await authArmorApiClient.validateAuthenticationAsync(
+        "magiclink_email",
+        {
+            requestId,
+            validationToken
+        }
+    );
 
-    if (!validationSucceeded) {
+    if (!validationResult.validate_auth_response_details.authorized) {
         return new NextResponse(null, {
             status: 403
         });
     }
 
-    // autharmor: fetch user data
+    const authProfile =
+        validationResult.validate_auth_response_details.auth_details.response_details
+            .auth_profile_details;
+
     const authSessionData: AuthSessionData = {
-        userId: requestId,
-        username: requestId
+        userId: authProfile.user_id,
+        username: authProfile.username!
     };
 
     return new NextResponse(null, {

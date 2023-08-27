@@ -1,5 +1,7 @@
+import { ApiError, IMagicLinkEmailRegistrationResult } from "@autharmor/autharmor-node";
 import { NextRequest, NextResponse } from "next/server";
 import { AuthSessionData, createAuthCookieHeader } from "@/lib/auth";
+import { authArmorApiClient } from "@/lib/authArmorServer/authArmorApiClient";
 
 export async function GET(request: NextRequest): Promise<NextResponse<void>> {
     const { searchParams } = new URL(request.url);
@@ -12,19 +14,25 @@ export async function GET(request: NextRequest): Promise<NextResponse<void>> {
         });
     }
 
-    // autharmor: validate token
-    const validationSucceeded = true;
+    let validationResult: IMagicLinkEmailRegistrationResult;
 
-    if (!validationSucceeded) {
-        return new NextResponse(null, {
-            status: 403
+    try {
+        validationResult = await authArmorApiClient.validateMagicLinkEmailRegistrationAsync({
+            validationToken
         });
+    } catch (error: unknown) {
+        if (error instanceof ApiError && (error.statusCode === 401 || error.statusCode === 403)) {
+            return new NextResponse(null, {
+                status: error.statusCode
+            });
+        } else {
+            throw error;
+        }
     }
 
-    // autharmor: fetch user data
     const authSessionData: AuthSessionData = {
-        userId: validationToken,
-        username: validationToken
+        userId: validationResult.user_id,
+        username: validationResult.username
     };
 
     return new NextResponse(null, {

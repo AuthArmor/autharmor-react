@@ -1,20 +1,30 @@
 "use client";
 
-import { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/autharmor-js";
-// @TODO: Remove import.
-// import "@autharmor/autharmor-js-ui";
+import {
+    AuthArmorClient,
+    IAuthenticationSuccessResult,
+    IRegistrationSuccessResult
+} from "@autharmor/autharmor-js";
 import { IAuthArmorInteractiveClientConfiguration } from "@autharmor/autharmor-js-ui";
-import { AuthArmorForm } from "@autharmor/react";
-import { useState } from "react";
+import "@autharmor/autharmor-js-ui";
+import { AuthArmorForm } from "@autharmor/autharmor-react";
+import { useEffect, useState } from "react";
 
-import { authArmorClient, authArmorInteractiveClientConfig } from "@/lib/authArmor";
+import { authArmorClientConfig, authArmorInteractiveClientConfig } from "@/lib/authArmor";
 import { ensureSuccessCode } from "@/lib/http/ensureSuccessCode";
 import { LogInRequest } from "../auth/log-in/route";
 import { RegisterRequest } from "../auth/register/route";
 
 export default function SignUpLogInPage() {
-    const [allowLogIn, setAllowLogIn] = useState(true);
-    const [allowRegister, setAllowRegister] = useState(true);
+    const [authArmorClient, setAuthArmorClient] = useState<AuthArmorClient>(null!);
+    useEffect(() => setAuthArmorClient(new AuthArmorClient(authArmorClientConfig)), []);
+
+    const [enforceAction, setEnforceAction] = useState<"logIn" | "register" | null>(null);
+    const [enforceUsername, setEnforceUsername] = useState<string | null>(null);
+    const [enforceMethod, setEnforceMethod] = useState<
+        "authenticator" | "webAuthn" | "magicLinkEmail" | null
+    >(null);
+    const [enableUsernamelessLogIn, setEnableUsernamelessLogIn] = useState<boolean>(true);
     const [interactiveConfig, setInteractiveConfig] =
         useState<IAuthArmorInteractiveClientConfiguration>({
             ...authArmorInteractiveClientConfig,
@@ -24,10 +34,12 @@ export default function SignUpLogInPage() {
                 webAuthn: true
             }
         });
-    const [allowUsernameless, setAllowUsernameless] = useState(true);
 
-    const [allowLogInNext, setAllowLogInNext] = useState(allowLogIn);
-    const [allowRegisterNext, setAllowRegisterNext] = useState(allowRegister);
+    const [enforceActionNext, setEnforceActionNext] = useState(enforceAction);
+    const [enforceUsernameNext, setEnforceUsernameNext] = useState(enforceUsername);
+    const [enforceMethodNext, setEnforceMethodNext] = useState(enforceMethod);
+    const [enableUsernamelessLogInNext, setEnableUsernamelessLogInNext] =
+        useState(enableUsernamelessLogIn);
     const [allowAuthenticatorNext, setAllowAuthenticatorNext] = useState(
         interactiveConfig.permittedMethods!.authenticator
     );
@@ -37,11 +49,12 @@ export default function SignUpLogInPage() {
     const [allowWebAuthnNext, setAllowWebAuthnNext] = useState(
         interactiveConfig.permittedMethods!.webAuthn
     );
-    const [allowUsernamelessNext, setAllowUsernamelessNext] = useState(allowUsernameless);
 
     const handleApply = () => {
-        setAllowLogIn(allowLogInNext);
-        setAllowRegister(allowRegisterNext);
+        setEnforceAction(enforceActionNext);
+        setEnforceUsername(enforceUsernameNext);
+        setEnforceMethod(enforceMethodNext);
+        setEnableUsernamelessLogIn(enableUsernamelessLogInNext);
         setInteractiveConfig({
             ...interactiveConfig,
             permittedMethods: {
@@ -50,7 +63,6 @@ export default function SignUpLogInPage() {
                 webAuthn: allowWebAuthnNext
             }
         });
-        setAllowUsernameless(allowUsernamelessNext);
     };
 
     const handleLogIn = async (
@@ -81,8 +93,11 @@ export default function SignUpLogInPage() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                userId: registrationResult.userId,
-                username: registrationResult.username
+                registrationId: registrationResult.registrationId,
+                authenticationMethod: registrationResult.authenticationMethod as
+                    | "authenticator"
+                    | "webAuthn",
+                validationToken: registrationResult.validationToken
             } satisfies RegisterRequest)
         });
         ensureSuccessCode(response);
@@ -106,34 +121,62 @@ export default function SignUpLogInPage() {
                     client={authArmorClient}
                     onLogIn={handleLogIn}
                     onRegister={handleRegister}
-                    enableLogIn={allowLogIn}
-                    enableRegistration={allowRegister}
+                    action={enforceAction}
+                    username={enforceUsername}
+                    method={enforceMethod}
+                    enableUsernamelessLogIn={enableUsernamelessLogIn}
                     interactiveConfig={interactiveConfig}
-                    enableUsernameless={allowUsernameless}
                     className="column"
                 />
                 <div className="column is-three-fifths">
                     <div className="field">
-                        <p className="label">Allowed Actions</p>
+                        <p className="label">Enforce Action</p>
                         <div className="control">
-                            <label className="checkbox">
-                                <input
-                                    type="checkbox"
-                                    checked={allowLogInNext}
-                                    onChange={(e) => setAllowLogInNext(e.target.checked)}
-                                />
-                                Log in
-                            </label>
+                            <div className="select">
+                                <select
+                                    onChange={(e) =>
+                                        setEnforceActionNext(
+                                            (e.target.value || null) as typeof enforceAction
+                                        )
+                                    }
+                                    value={enforceActionNext ?? ""}
+                                >
+                                    <option value="">None</option>
+                                    <option value="logIn">Log In</option>
+                                    <option value="register">Register</option>
+                                </select>
+                            </div>
                         </div>
+                    </div>
+                    <div className="field">
+                        <p className="label">Enforce Username</p>
                         <div className="control">
-                            <label className="checkbox">
-                                <input
-                                    type="checkbox"
-                                    checked={allowRegisterNext}
-                                    onChange={(e) => setAllowRegisterNext(e.target.checked)}
-                                />
-                                Register
-                            </label>
+                            <input
+                                type="text"
+                                className="input"
+                                onChange={(e) => setEnforceUsernameNext(e.target.value || null)}
+                                value={enforceUsernameNext ?? ""}
+                            />
+                        </div>
+                    </div>
+                    <div className="field">
+                        <p className="label">Enforce Method</p>
+                        <div className="control">
+                            <div className="select">
+                                <select
+                                    onChange={(e) =>
+                                        setEnforceMethodNext(
+                                            (e.target.value || null) as typeof enforceMethod
+                                        )
+                                    }
+                                    value={enforceMethodNext ?? ""}
+                                >
+                                    <option value="">None</option>
+                                    <option value="authenticator">Authenticator App</option>
+                                    <option value="magicLinkEmail">Magic Link Email</option>
+                                    <option value="webAuthn">WebAuthn</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div className="field">
@@ -142,8 +185,8 @@ export default function SignUpLogInPage() {
                             <label className="checkbox">
                                 <input
                                     type="checkbox"
-                                    checked={allowAuthenticatorNext}
                                     onChange={(e) => setAllowAuthenticatorNext(e.target.checked)}
+                                    checked={allowAuthenticatorNext}
                                 />
                                 Authenticator
                             </label>
@@ -152,8 +195,8 @@ export default function SignUpLogInPage() {
                             <label className="checkbox">
                                 <input
                                     type="checkbox"
-                                    checked={allowMagicLinkEmailNext}
                                     onChange={(e) => setAllowMagicLinkEmailNext(e.target.checked)}
+                                    checked={allowMagicLinkEmailNext}
                                 />
                                 Magic link email
                             </label>
@@ -162,8 +205,8 @@ export default function SignUpLogInPage() {
                             <label className="checkbox">
                                 <input
                                     type="checkbox"
-                                    checked={allowWebAuthnNext}
                                     onChange={(e) => setAllowWebAuthnNext(e.target.checked)}
+                                    checked={allowWebAuthnNext}
                                 />
                                 WebAuthn
                             </label>
@@ -175,10 +218,12 @@ export default function SignUpLogInPage() {
                             <label className="checkbox">
                                 <input
                                     type="checkbox"
-                                    checked={allowUsernamelessNext}
-                                    onChange={(e) => setAllowUsernamelessNext(e.target.checked)}
+                                    onChange={(e) =>
+                                        setEnableUsernamelessLogInNext(e.target.checked)
+                                    }
+                                    checked={enableUsernamelessLogInNext}
                                 />
-                                Allow usernameless login
+                                Enable usernameless login
                             </label>
                         </div>
                     </div>

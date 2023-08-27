@@ -1,2 +1,2 @@
-export * from "./authArmorClient";
+export * from "./authArmorClientConfig";
 export * from "./authArmorInteractiveClientConfig";

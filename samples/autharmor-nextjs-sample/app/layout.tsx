@@ -1,4 +1,4 @@
-import "@autharmor/autharmor-ui/index.css";
+import "@autharmor/autharmor-js-ui/autharmor.css";
 import "bulma/css/bulma.min.css";
 import { Navbar } from "./shared/Navbar";
 

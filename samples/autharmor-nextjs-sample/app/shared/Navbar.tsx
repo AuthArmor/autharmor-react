@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { metadata } from "../layout";
 import cn from "clsx";
 
 export function Navbar() {
@@ -15,7 +14,7 @@ export function Navbar() {
             <div className="navbar-brand">
                 <Link className="navbar-item" href="/">
                     <img src="/img/logo.png" width="28" height="28" />
-                    <p className="has-text-weight-bold ml-1">{metadata.title}</p>
+                    <p className="has-text-weight-bold ml-1">AuthArmor Next.JS Sample</p>
                 </Link>
 
                 <button
