@@ -1,27 +1,36 @@
-import type { IAuthenticationSuccessResult, IRegistrationSuccessResult } from "@autharmor/autharmor-js";
-import type { IAuthArmorFormCustomElementProps, IAuthArmorInteractiveClientConfiguration, LogInEvent, RegisterEvent } from "@autharmor/autharmor-js-ui";
+import type {
+    IAuthenticationSuccessResult,
+    IRegistrationSuccessResult
+} from "@autharmor/autharmor-js";
+import type {
+    AuthArmorFormCustomElementProps,
+    IAuthArmorInteractiveClientConfiguration,
+    LogInEvent,
+    RegisterEvent
+} from "@autharmor/autharmor-js-ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
 import "@autharmor/autharmor-js-ui";
 
-export type AuthArmorFormProps = Partial<Omit<IAuthArmorFormCustomElementProps, "client">> &
-    Pick<IAuthArmorFormCustomElementProps, "client"> & {
+export type AuthArmorFormProps = Partial<Omit<AuthArmorFormCustomElementProps, "client">> &
+    Pick<AuthArmorFormCustomElementProps, "client"> & {
         className?: string;
         style?: CSSProperties;
         onLogIn?: (authenticationResult: IAuthenticationSuccessResult) => void;
         onRegister?: (registrationResult: IRegistrationSuccessResult) => void;
     };
-    
+
 // Avoid unnecessary re-rendering because of the object instance changing.
 const defaultInteractiveConfig: IAuthArmorInteractiveClientConfiguration = {};
 
 export function AuthArmorForm({
     client = null,
     interactiveConfig = defaultInteractiveConfig,
-    enableLogIn = true,
-    enableRegistration = true,
-    initialMode = "logIn",
-    enableUsernameless = true,
+    action = null,
+    username = null,
+    method = null,
+    defaultAction = null,
+    enableUsernamelessLogIn = true,
     className,
     style,
     onLogIn,
@@ -68,10 +77,11 @@ export function AuthArmorForm({
     return (
         <autharmor-form
             ref={form}
-            enable-log-in={enableLogIn}
-            enable-registration={enableRegistration}
-            initial-mode={initialMode}
-            enable-usernameless={enableUsernameless}
+            action={action}
+            username={username}
+            method={method}
+            defaultAction={defaultAction}
+            enableUsernamelessLogIn={enableUsernamelessLogIn}
             class={className}
             style={style}
         />
