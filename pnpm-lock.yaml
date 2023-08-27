@@ -47,6 +47,9 @@ devDependencies:
   rollup:
     specifier: ^3.25.1
     version: 3.25.1
+  rollup-plugin-peer-deps-external:
+    specifier: ^2.2.4
+    version: 2.2.4(rollup@3.25.1)
   tslib:
     specifier: ^2.5.3
     version: 2.5.3
@@ -1897,6 +1900,14 @@ packages:
       is-core-module: 2.12.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    dev: true
+
+  /rollup-plugin-peer-deps-external@2.2.4(rollup@3.25.1):
+    resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==}
+    peerDependencies:
+      rollup: '*'
+    dependencies:
+      rollup: 3.25.1
     dev: true
 
   /rollup@3.25.1:
