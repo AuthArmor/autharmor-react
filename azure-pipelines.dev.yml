@@ -54,7 +54,7 @@ stages:
           targetFolder: $(Build.ArtifactStagingDirectory)
 
       - publish: $(Build.ArtifactStagingDirectory)
-        artifact: autharmor-sdk-ui-react-ui
+        artifact: autharmor-react-ui
         displayName: 'Publish package'
 
   - stage: deploy
@@ -68,9 +68,9 @@ stages:
           deploy:
             steps:
             - download: current
-              artifact: autharmor-sdk-ui-react-ui
+              artifact: autharmor-react-ui
             - task: npmAuthenticate@0
               inputs:
-                workingFile: $(Pipeline.Workspace)/autharmor-sdk-ui-react-ui/.npmrc
+                workingFile: $(Pipeline.Workspace)/autharmor-react-ui/.npmrc
             - script: npm publish
-              workingDirectory: $(Pipeline.Workspace)/autharmor-sdk-ui-react-ui/
+              workingDirectory: $(Pipeline.Workspace)/autharmor-react-ui/
