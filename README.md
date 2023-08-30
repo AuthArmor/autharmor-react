@@ -45,8 +45,8 @@ export function MyAuthArmorForm() {
     return (
         <AuthArmorForm
             client={client}
-            enableRegistration={false}
             onLogIn={onLogIn}
+            onRegister={onRegister}
         />
     );
 }
@@ -54,14 +54,14 @@ export function MyAuthArmorForm() {
 
 The `AuthArmorForm` accepts all the properties that the `autharmor-form` component from the [@autharmor/autharmor-js-ui](https://github.com/AuthArmor/autharmor-js-ui) package accepts. Refer to its documentation to learn how to use these properties.
 
+All events from `autharmor-form` are also available. The first letter of the DOM event name is capitalized and `on` is prepended. For example, to use the `logIn` event, you can use the `onLogIn` property.
+
 In addition, the component defines a few additional properties:
 
-| **Property** | **Type**                                                       | **Description**                                                                      |
-|--------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| `className`  | `string`                                                       | The CSS class to use for the `autharmor-form` component.                             |
-| `style`      | `React.CSSProperties`                                          | The CSS styles to use for the `autharmor-form` component.                            |
-| `onLogIn`    | `(authenticationResult: IAuthenticationSuccessResult) => void` | An event handler that is called when the user successfully logs in using the form.   |
-| `onRegister` | `(registrationResult: IRegistrationSuccessResult) => void`     | An event handler that is called when the user successfully registers using the form. |
+| **Property** | **Type**              | **Description**                                           |
+| ------------ | --------------------- | --------------------------------------------------------- |
+| `className`  | `string`              | The CSS class to use for the `autharmor-form` component.  |
+| `style`      | `React.CSSProperties` | The CSS styles to use for the `autharmor-form` component. |
 
 ## Other Functionality
 
