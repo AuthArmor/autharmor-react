@@ -1,8 +1,4 @@
 import type {
-    IAuthenticationSuccessResult,
-    IRegistrationSuccessResult
-} from "@autharmor/autharmor-js";
-import type {
     AuthArmorFormCustomElementProps,
     IAuthArmorInteractiveClientConfiguration,
     LogInEvent,
@@ -10,14 +6,12 @@ import type {
 } from "@autharmor/autharmor-js-ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
-import "@autharmor/autharmor-js-ui";
-
 export type AuthArmorFormProps = Partial<Omit<AuthArmorFormCustomElementProps, "client">> &
     Pick<AuthArmorFormCustomElementProps, "client"> & {
         className?: string;
         style?: CSSProperties;
-        onLogIn?: (authenticationResult: IAuthenticationSuccessResult) => void;
-        onRegister?: (registrationResult: IRegistrationSuccessResult) => void;
+        onLogIn?: (event: LogInEvent) => void;
+        onRegister?: (event: RegisterEvent) => void;
     };
 
 // Avoid unnecessary re-rendering because of the object instance changing.
@@ -38,9 +32,8 @@ export function AuthArmorForm({
 }: AuthArmorFormProps) {
     const form = useRef<HTMLElementTagNameMap["autharmor-form"]>();
 
-    const handleLogIn = ({ authenticationResult }: LogInEvent) => onLogIn?.(authenticationResult);
-    const handleRegister = ({ registrationResult }: RegisterEvent) =>
-        onRegister?.(registrationResult);
+    const handleLogIn = (event: LogInEvent) => onLogIn?.(event);
+    const handleRegister = (event: RegisterEvent) => onRegister?.(event);
 
     useEffect(() => {
         form.current!.addEventListener(
