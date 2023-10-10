@@ -1,6 +1,6 @@
 {
     "name": "@autharmor/autharmor-react",
-    "version": "4.0.0",
+    "version": "4.0.0-rc.1",
     "type": "module",
     "source": "src/index.ts",
     "types": "./dist/types/index.d.ts",
@@ -50,8 +50,8 @@
         "typescript": "^5.2.2"
     },
     "peerDependencies": {
-        "@autharmor/autharmor-js": "^4.0.0",
-        "@autharmor/autharmor-js-ui": "^4.0.0",
+        "@autharmor/autharmor-js": "4.0.0-rc.1",
+        "@autharmor/autharmor-js-ui": "4.0.0-rc.1",
         "react": "^18.0.0",
         "react-dom": "^18.0.0"
     }
