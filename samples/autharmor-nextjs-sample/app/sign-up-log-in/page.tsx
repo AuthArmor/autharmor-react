@@ -5,7 +5,7 @@ import {
     IAuthenticationSuccessResult,
     IRegistrationSuccessResult
 } from "@autharmor/autharmor-js";
-import { IAuthArmorInteractiveClientConfiguration } from "@autharmor/autharmor-js-ui";
+import { IAuthArmorInteractiveClientConfiguration, LogInEvent, RegisterEvent } from "@autharmor/autharmor-js-ui";
 import "@autharmor/autharmor-js-ui";
 import { AuthArmorForm } from "@autharmor/autharmor-react";
 import { useEffect, useState } from "react";
@@ -66,7 +66,7 @@ export default function SignUpLogInPage() {
     };
 
     const handleLogIn = async (
-        authenticationResult: IAuthenticationSuccessResult
+        { authenticationResult }: LogInEvent
     ): Promise<void> => {
         const response = await fetch("/auth/log-in", {
             method: "POST",
@@ -85,7 +85,7 @@ export default function SignUpLogInPage() {
     };
 
     const handleRegister = async (
-        registrationResult: IRegistrationSuccessResult
+        {registrationResult}: RegisterEvent
     ): Promise<void> => {
         const response = await fetch("/auth/register", {
             method: "POST",
