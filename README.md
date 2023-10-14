@@ -12,13 +12,13 @@ This package is available on the NPM registry as `@autharmor/autharmor-react`. Y
 
 ```sh
 # NPM
-npm install @autharmor/autharmor-js @autharmor/autharmor-js-ui @autharmor/react
+npm install @autharmor/autharmor-js @autharmor/autharmor-js-ui @autharmor/autharmor-react
 
 # PNPM
-pnpm add @autharmor/autharmor-js @autharmor/autharmor-js-ui @autharmor/react
+pnpm add @autharmor/autharmor-js @autharmor/autharmor-js-ui @autharmor/autharmor-react
 
 # Yarn
-yarn add @autharmor/autharmor-js @autharmor/autharmor-js-ui @autharmor/react
+yarn add @autharmor/autharmor-js @autharmor/autharmor-js-ui @autharmor/autharmor-react
 ```
 
 ## Rendering the Auth Armor Form
