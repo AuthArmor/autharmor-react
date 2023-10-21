@@ -1,6 +1,6 @@
 {
     "name": "@autharmor/autharmor-react",
-    "version": "4.0.0-rc.1",
+    "version": "4.0.0-rc.1.1",
     "type": "module",
     "source": "src/index.ts",
     "types": "./dist/types/index.d.ts",
@@ -8,8 +8,7 @@
     "exports": {
         ".": {
             "types": "./dist/types/index.d.ts",
-            "import": "./dist/esm/index.js",
-            "browser": "./dist/esm/index.js"
+            "import": "./dist/esm/index.js"
         }
     },
     "license": "MIT",
@@ -51,7 +50,7 @@
     },
     "peerDependencies": {
         "@autharmor/autharmor-js": "4.0.0-rc.1",
-        "@autharmor/autharmor-js-ui": "4.0.0-rc.1",
+        "@autharmor/autharmor-js-ui": "4.0.0-rc.1.3",
         "react": "^18.0.0",
         "react-dom": "^18.0.0"
     }

@@ -1,8 +1,19 @@
+import {
+    IAuthenticationFailureResult,
+    IAuthenticationSuccessResult,
+    IRegistrationFailureResult,
+    IRegistrationSuccessResult
+} from "@autharmor/autharmor-js";
 import type {
     AuthArmorFormCustomElementProps,
+    ErrorThrownEvent,
     IAuthArmorInteractiveClientConfiguration,
     LogInEvent,
-    RegisterEvent
+    LogInFailureEvent,
+    OutOfBandLogInEvent,
+    OutOfBandRegisterEvent,
+    RegisterEvent,
+    RegisterFailureEvent
 } from "@autharmor/autharmor-js-ui";
 import { CSSProperties, useEffect, useRef } from "react";
 
@@ -10,8 +21,17 @@ export type AuthArmorFormProps = Partial<Omit<AuthArmorFormCustomElementProps, "
     Pick<AuthArmorFormCustomElementProps, "client"> & {
         className?: string;
         style?: CSSProperties;
-        onLogIn?: (event: LogInEvent) => void;
-        onRegister?: (event: RegisterEvent) => void;
+
+        onLogIn?: (authenticationResult: IAuthenticationSuccessResult) => void;
+        onRegister?: (registrationResult: IRegistrationSuccessResult) => void;
+
+        onOutOfBandLogIn?: (authenticationResult: IAuthenticationSuccessResult) => void;
+        onOutOfBandRegister?: (registrationResult: IRegistrationSuccessResult) => void;
+
+        onLogInFailure?: (authenticationResult: IAuthenticationFailureResult) => void;
+        onRegisterFailure?: (registrationResult: IRegistrationFailureResult) => void;
+
+        onError?: (error: unknown) => void;
     };
 
 // Avoid unnecessary re-rendering because of the object instance changing.
@@ -28,12 +48,30 @@ export function AuthArmorForm({
     className,
     style,
     onLogIn,
-    onRegister
+    onRegister,
+    onOutOfBandLogIn,
+    onOutOfBandRegister,
+    onLogInFailure,
+    onRegisterFailure,
+    onError
 }: AuthArmorFormProps) {
     const form = useRef<HTMLElementTagNameMap["autharmor-form"]>();
 
-    const handleLogIn = (event: LogInEvent) => onLogIn?.(event);
-    const handleRegister = (event: RegisterEvent) => onRegister?.(event);
+    const handleLogIn = ({ authenticationResult }: LogInEvent) => onLogIn?.(authenticationResult);
+    const handleRegister = ({ registrationResult }: RegisterEvent) =>
+        onRegister?.(registrationResult);
+
+    const handleOutOfBandLogIn = ({ authenticationResult }: OutOfBandLogInEvent) =>
+        onOutOfBandLogIn?.(authenticationResult);
+    const handleOutOfBandRegister = ({ registrationResult }: OutOfBandRegisterEvent) =>
+        onOutOfBandRegister?.(registrationResult);
+
+    const handleLogInFailure = ({ authenticationResult }: LogInFailureEvent) =>
+        onLogInFailure?.(authenticationResult);
+    const handleRegisterFailure = ({ registrationResult }: RegisterFailureEvent) =>
+        onRegisterFailure?.(registrationResult);
+
+    const handleError = ({ error }: ErrorThrownEvent) => onError?.(error);
 
     useEffect(() => {
         form.current!.addEventListener(
@@ -46,6 +84,31 @@ export function AuthArmorForm({
             handleRegister as EventListenerOrEventListenerObject
         );
 
+        form.current!.addEventListener(
+            "outOfBandLogIn" as keyof HTMLElementEventMap,
+            handleOutOfBandLogIn as EventListenerOrEventListenerObject
+        );
+
+        form.current!.addEventListener(
+            "outOfBandRegister" as keyof HTMLElementEventMap,
+            handleOutOfBandRegister as EventListenerOrEventListenerObject
+        );
+
+        form.current!.addEventListener(
+            "logInFailure" as keyof HTMLElementEventMap,
+            handleLogInFailure as EventListenerOrEventListenerObject
+        );
+
+        form.current!.addEventListener(
+            "registerFailure" as keyof HTMLElementEventMap,
+            handleRegisterFailure as EventListenerOrEventListenerObject
+        );
+
+        form.current!.addEventListener(
+            "error" as keyof HTMLElementEventMap,
+            handleError as EventListenerOrEventListenerObject
+        );
+
         return () => {
             form.current?.removeEventListener(
                 "logIn" as keyof HTMLElementEventMap,
@@ -55,6 +118,31 @@ export function AuthArmorForm({
             form.current?.removeEventListener(
                 "register" as keyof HTMLElementEventMap,
                 handleRegister as EventListenerOrEventListenerObject
+            );
+
+            form.current!.removeEventListener(
+                "outOfBandLogIn" as keyof HTMLElementEventMap,
+                handleOutOfBandLogIn as EventListenerOrEventListenerObject
+            );
+    
+            form.current!.removeEventListener(
+                "outOfBandRegister" as keyof HTMLElementEventMap,
+                handleOutOfBandRegister as EventListenerOrEventListenerObject
+            );
+    
+            form.current!.removeEventListener(
+                "logInFailure" as keyof HTMLElementEventMap,
+                handleLogInFailure as EventListenerOrEventListenerObject
+            );
+    
+            form.current!.removeEventListener(
+                "registerFailure" as keyof HTMLElementEventMap,
+                handleRegisterFailure as EventListenerOrEventListenerObject
+            );
+    
+            form.current!.removeEventListener(
+                "error" as keyof HTMLElementEventMap,
+                handleError as EventListenerOrEventListenerObject
             );
         };
     }, []);
