@@ -1,6 +1,6 @@
 # Auth Armor Javascript Client-Side SDK UI Wrapper for React
 
-Auth Armor provides a SaaS solution to authenticate your users exclusively using passwordless authentication methods such as WebAuthn, magic links and the proprietary Auth Armor mobile app.
+Auth Armor provides a SaaS solution to authenticate your users exclusively using passwordless authentication methods such as passkeys, magic links and the proprietary Auth Armor mobile app.
 
 This package wraps the `autharmor-form` component provided by the [@autharmor/autharmor-js-ui](https://github.com/AuthArmor/autharmor-js-ui) package. It allows you to use a native React component to render the Auth Armor form with the full benefits of type-checking and the ability to pass objects to components directly from the markup.
 
