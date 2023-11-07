@@ -108,43 +108,6 @@ export function AuthArmorForm({
             "error" as keyof HTMLElementEventMap,
             handleError as EventListenerOrEventListenerObject
         );
-
-        return () => {
-            form.current?.removeEventListener(
-                "logIn" as keyof HTMLElementEventMap,
-                handleLogIn as EventListenerOrEventListenerObject
-            );
-
-            form.current?.removeEventListener(
-                "register" as keyof HTMLElementEventMap,
-                handleRegister as EventListenerOrEventListenerObject
-            );
-
-            form.current!.removeEventListener(
-                "outOfBandLogIn" as keyof HTMLElementEventMap,
-                handleOutOfBandLogIn as EventListenerOrEventListenerObject
-            );
-    
-            form.current!.removeEventListener(
-                "outOfBandRegister" as keyof HTMLElementEventMap,
-                handleOutOfBandRegister as EventListenerOrEventListenerObject
-            );
-    
-            form.current!.removeEventListener(
-                "logInFailure" as keyof HTMLElementEventMap,
-                handleLogInFailure as EventListenerOrEventListenerObject
-            );
-    
-            form.current!.removeEventListener(
-                "registerFailure" as keyof HTMLElementEventMap,
-                handleRegisterFailure as EventListenerOrEventListenerObject
-            );
-    
-            form.current!.removeEventListener(
-                "error" as keyof HTMLElementEventMap,
-                handleError as EventListenerOrEventListenerObject
-            );
-        };
     }, []);
 
     useEffect(() => {
