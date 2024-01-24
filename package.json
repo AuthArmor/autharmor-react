@@ -53,5 +53,8 @@
         "@autharmor/autharmor-js-ui": "4.0.0-rc.2.1",
         "react": "^18.0.0",
         "react-dom": "^18.0.0"
+    },
+    "dependencies": {
+        "wc-react": "^0.5.1"
     }
 }

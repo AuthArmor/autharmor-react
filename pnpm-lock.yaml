@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  wc-react:
+    specifier: ^0.5.1
+    version: 0.5.1
+
 devDependencies:
   '@autharmor/autharmor-js':
     specifier: link:..\autharmor-js
@@ -2031,6 +2036,10 @@ packages:
       escalade: 3.1.1
       picocolors: 1.0.0
     dev: true
+
+  /wc-react@0.5.1:
+    resolution: {integrity: sha512-AI5mFXbyUhAhzjBr12xpPAUDthE+qOWTGuRgOpj7a9qjO7+7q/A/IAS23lz5vmltFaKY+MWIPYopJfAoP5/E+Q==}
+    dev: false
 
   /wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
