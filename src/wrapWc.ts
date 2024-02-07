@@ -234,7 +234,7 @@ export class Wc extends Component<WcTypeProps> {
   protected addEventListener(propName: string, handler: EventListenerOrEventListenerObject) {
     let eventName = propName;
     if (eventName.match(/^on[A-Z]/gm)){
-      eventName = eventName.substring(2).toLowerCase();
+      eventName = eventName.substring(2);
     }
     this._element.addEventListener(eventName, handler);
   }
@@ -250,7 +250,7 @@ export class Wc extends Component<WcTypeProps> {
   protected removeEventListener(propName: string, handler: EventListenerOrEventListenerObject) {
     let eventName = propName;
     if (eventName.match(/^on[A-Z]/gm)){
-      eventName = eventName.substring(2).toLowerCase();
+      eventName = eventName.substring(2);
     }
     this._element.removeEventListener(eventName, handler);
   }
