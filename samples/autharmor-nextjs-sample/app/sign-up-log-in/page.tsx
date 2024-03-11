@@ -6,7 +6,7 @@ import {
     IRegistrationSuccessResult
 } from "@autharmor/autharmor-js";
 import { IAuthArmorInteractiveClientConfiguration, LogInEvent, RegisterEvent } from "@autharmor/autharmor-js-ui";
-import "@autharmor/autharmor-js-ui";
+import "@autharmor/autharmor-js-ui/webc";
 import { AuthArmorForm } from "@autharmor/autharmor-react";
 import { useEffect, useState } from "react";
 
@@ -22,7 +22,7 @@ export default function SignUpLogInPage() {
     const [enforceAction, setEnforceAction] = useState<"logIn" | "register" | null>(null);
     const [enforceUsername, setEnforceUsername] = useState<string | null>(null);
     const [enforceMethod, setEnforceMethod] = useState<
-        "authenticator" | "webAuthn" | "magicLinkEmail" | null
+        "authenticator" | "passkey" | "magicLinkEmail" | null
     >(null);
     const [enableUsernamelessLogIn, setEnableUsernamelessLogIn] = useState<boolean>(true);
     const [interactiveConfig, setInteractiveConfig] =
@@ -31,7 +31,7 @@ export default function SignUpLogInPage() {
             permittedMethods: {
                 authenticator: true,
                 magicLinkEmail: true,
-                webAuthn: true
+                passkey: true
             }
         });
 
@@ -46,8 +46,8 @@ export default function SignUpLogInPage() {
     const [allowMagicLinkEmailNext, setAllowMagicLinkEmailNext] = useState(
         interactiveConfig.permittedMethods!.magicLinkEmail
     );
-    const [allowWebAuthnNext, setAllowWebAuthnNext] = useState(
-        interactiveConfig.permittedMethods!.webAuthn
+    const [allowPasskeyNext, setAllowPasskeyNext] = useState(
+        interactiveConfig.permittedMethods!.passkey
     );
 
     const handleApply = () => {
@@ -60,7 +60,7 @@ export default function SignUpLogInPage() {
             permittedMethods: {
                 authenticator: allowAuthenticatorNext,
                 magicLinkEmail: allowMagicLinkEmailNext,
-                webAuthn: allowWebAuthnNext
+                passkey: allowPasskeyNext
             }
         });
     };
@@ -205,8 +205,8 @@ export default function SignUpLogInPage() {
                             <label className="checkbox">
                                 <input
                                     type="checkbox"
-                                    onChange={(e) => setAllowWebAuthnNext(e.target.checked)}
-                                    checked={allowWebAuthnNext}
+                                    onChange={(e) => setAllowPasskeyNext(e.target.checked)}
+                                    checked={allowPasskeyNext}
                                 />
                                 WebAuthn
                             </label>

@@ -6,17 +6,17 @@ settings:
 
 dependencies:
   '@autharmor/autharmor-js':
-    specifier: 4.0.0-rc.1
-    version: 4.0.0-rc.1
+    specifier: 4.0.0-rc.2.1
+    version: 4.0.0-rc.2.1
   '@autharmor/autharmor-js-ui':
-    specifier: 4.0.0-rc.1
-    version: 4.0.0-rc.1(@autharmor/autharmor-js@4.0.0-rc.1)
+    specifier: 4.0.0-rc.2.1
+    version: 4.0.0-rc.2.1(@autharmor/autharmor-js@4.0.0-rc.2.1)
   '@autharmor/autharmor-node':
-    specifier: 4.0.0-rc.1
-    version: 4.0.0-rc.1
+    specifier: ../../../autharmor-node/
+    version: link:../../../autharmor-node
   '@autharmor/autharmor-react':
-    specifier: 4.0.0-rc.1
-    version: 4.0.0-rc.1(@autharmor/autharmor-js-ui@4.0.0-rc.1)(@autharmor/autharmor-js@4.0.0-rc.1)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ../../
+    version: link:../..
   '@types/node':
     specifier: 20.8.4
     version: 20.8.4
@@ -50,46 +50,21 @@ dependencies:
 
 packages:
 
-  /@autharmor/autharmor-js-ui@4.0.0-rc.1(@autharmor/autharmor-js@4.0.0-rc.1):
-    resolution: {integrity: sha512-9M+F1QfNSexjK1+tZQyClfoj8oaZIutDzZ7tll3wnwwQq5KoW20bjiIcJwmmRZYeY0n1gKJamHuMkXRUHo//Ag==}
+  /@autharmor/autharmor-js-ui@4.0.0-rc.2.1(@autharmor/autharmor-js@4.0.0-rc.2.1):
+    resolution: {integrity: sha512-niWfXnm2imKXaZroOeo48ihaekjZecKXgIbU82W+Z3zIWA0fenU9wPFWPltC9GK07xvtEM0ceJcT6TpvXAwYgA==}
     peerDependencies:
-      '@autharmor/autharmor-js': 4.0.0-rc.1
+      '@autharmor/autharmor-js': 4.0.0-rc.2.1
     dependencies:
-      '@autharmor/autharmor-js': 4.0.0-rc.1
+      '@autharmor/autharmor-js': 4.0.0-rc.2.1
       '@hcaptcha/types': 1.0.3
       clsx: 2.0.0
       qrcode-generator: 1.4.4
-      solid-element: 1.7.1(solid-js@1.8.1)
-      solid-js: 1.8.1
+      solid-element: 1.8.0(solid-js@1.8.12)
+      solid-js: 1.8.12
     dev: false
 
-  /@autharmor/autharmor-js@4.0.0-rc.1:
-    resolution: {integrity: sha512-O7Y+nz9aPFBSFV8Ypk5fAblDCNgVC/rYV1YKneGBk/0iLpVa0U5Pp6NOiOcLoGhfYmkuDTxGxGRy+z/Zb1PbKg==}
-    dev: false
-
-  /@autharmor/autharmor-node@4.0.0-rc.1:
-    resolution: {integrity: sha512-TBKYxP/LYKT4yakDL1focmJvkmKJweG50u9DzmhKXGiOnRhVjWT9OerFMTi40u1LlNE2EpmZAi8LQv96T5aWbQ==}
-    dependencies:
-      undici: 5.26.3
-    dev: false
-
-  /@autharmor/autharmor-react@4.0.0-rc.1(@autharmor/autharmor-js-ui@4.0.0-rc.1)(@autharmor/autharmor-js@4.0.0-rc.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-6zB2qNuFkT7WQUd4r/ccKJ51aVyK1epc7UzpBPHDdBL+THxMpT1Nu5SJ46IK6Vup++dyB2/qEz+ix2IQXhi4+Q==}
-    peerDependencies:
-      '@autharmor/autharmor-js': 4.0.0-rc.1
-      '@autharmor/autharmor-js-ui': 4.0.0-rc.1
-      react: ^18.0.0
-      react-dom: ^18.0.0
-    dependencies:
-      '@autharmor/autharmor-js': 4.0.0-rc.1
-      '@autharmor/autharmor-js-ui': 4.0.0-rc.1(@autharmor/autharmor-js@4.0.0-rc.1)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@fastify/busboy@2.0.0:
-    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
-    engines: {node: '>=14'}
+  /@autharmor/autharmor-js@4.0.0-rc.2.1:
+    resolution: {integrity: sha512-02h582w45RPVQIBOOrp0IANEwKa4I9LdrtCOTR9Wyo6BGKRcGhjSv8YKmFXViEaQhdvsAsORFYz2Hp5pfyWagg==}
     dev: false
 
   /@hcaptcha/types@1.0.3:
@@ -568,25 +543,35 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
-  /seroval@0.10.4:
-    resolution: {integrity: sha512-TdaE9JkoATjKu+vjwllieX8zWyBTUVxbgWDnOsDJFfmKbM7vLSukuCXuD3pO3kkCtX4daywOW8ps2VCdPhS8/w==}
+  /seroval-plugins@1.0.4(seroval@1.0.4):
+    resolution: {integrity: sha512-DQ2IK6oQVvy8k+c2V5x5YCtUa/GGGsUwUBNN9UqohrZ0rWdUapBFpNMYP1bCyRHoxOJjdKGl+dieacFIpU/i1A==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      seroval: ^1.0
+    dependencies:
+      seroval: 1.0.4
+    dev: false
+
+  /seroval@1.0.4:
+    resolution: {integrity: sha512-qQs/N+KfJu83rmszFQaTxcoJoPn6KNUruX4KmnmyD0oZkUoiNvJ1rpdYKDf4YHM05k+HOgCxa3yvf15QbVijGg==}
     engines: {node: '>=10'}
     dev: false
 
-  /solid-element@1.7.1(solid-js@1.8.1):
-    resolution: {integrity: sha512-VtG3kg3HRUkq6QN4iyZKX1qmXYCEHMO3yH1DfakifaO+ncxHa56jU8SLtEgD55zR230pXQyPTWaEDDS0hTlmpg==}
+  /solid-element@1.8.0(solid-js@1.8.12):
+    resolution: {integrity: sha512-DG8HBCej5kNExUiFbVG8OFZojMGcLF8keXdGLEcHXBYtJ7zhm+a8HJnl5lfmBlTYGRk4ApgoBvlwH1ibg7quaQ==}
     peerDependencies:
-      solid-js: ^1.7.6
+      solid-js: ^1.8.0
     dependencies:
       component-register: 0.8.3
-      solid-js: 1.8.1
+      solid-js: 1.8.12
     dev: false
 
-  /solid-js@1.8.1:
-    resolution: {integrity: sha512-HU4tB/vWY5/0P9GzbvePjK1aucNqUcF1XlAirZBjKkrkWG8XNIN9HSjscTC/nbl3A6JWjrW+OLcPEvWxsMhdng==}
+  /solid-js@1.8.12:
+    resolution: {integrity: sha512-sLE/i6M9FSWlov3a2pTC5ISzanH2aKwqXTZj+bbFt4SUrVb4iGEa7fpILBMOxsQjkv3eXqEk6JVLlogOdTe0UQ==}
     dependencies:
       csstype: 3.1.2
-      seroval: 0.10.4
+      seroval: 1.0.4
+      seroval-plugins: 1.0.4(seroval@1.0.4)
     dev: false
 
   /source-map-js@1.0.2:
@@ -632,13 +617,6 @@ packages:
 
   /undici-types@5.25.3:
     resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
-    dev: false
-
-  /undici@5.26.3:
-    resolution: {integrity: sha512-H7n2zmKEWgOllKkIUkLvFmsJQj062lSm3uA4EYApG8gLuiOM0/go9bIoC3HVaSnfg4xunowDE2i9p8drkXuvDw==}
-    engines: {node: '>=14.0'}
-    dependencies:
-      '@fastify/busboy': 2.0.0
     dev: false
 
   /watchpack@2.4.0:

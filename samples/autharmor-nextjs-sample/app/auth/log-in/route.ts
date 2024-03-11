@@ -4,7 +4,7 @@ import { authArmorApiClient } from "@/lib/authArmorServer/authArmorApiClient";
 
 export type LogInRequest = {
     requestId: string;
-    authenticationMethod: "authenticator" | "magicLinkEmail" | "webAuthn";
+    authenticationMethod: "authenticator" | "magicLinkEmail" | "passkey";
     validationToken: string;
 };
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<void>> {
 
     const authenticationMethodMapping = {
         authenticator: "authenticator",
-        webAuthn: "webauthn",
+        passkey: "webauthn",
         magicLinkEmail: "magiclink_email"
     } as const;
 
